@@ -13,7 +13,7 @@ class UserRepository:
         self.collection = supabase.table('usuario')
 
     def get_all_users(self):
-        users = self.collection.select('*').execute().data
+        users = self.collection.select('nome, usuario').execute().data
         return users
 
     def new_user(self, user):
@@ -24,5 +24,5 @@ class UserRepository:
         return user
 
     def getUserByLogin(self, user):
-        user = self.collection.select('*').eq('usuario', user.usuario).eq('senha', user.senha).execute().data
+        user = self.collection.select('*').eq('usuario', user["usuario"]).eq('senha', user["senha"]).execute().data
         return user

@@ -14,13 +14,12 @@ def hello():
 def login():
 
     user = request.get_json()
-
     usuario = userRepository.getUserByLogin(user)
 
     if usuario is None:
         return "Usuario não encontrado", 404
 
-    return True, 200
+    return "Ok", 200
 
 
 @app.route("/novousuario", methods=['POST'])
